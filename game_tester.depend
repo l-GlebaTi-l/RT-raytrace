@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1590652429 source:c:\programs\game_tester\main.cpp
+	<iostream>
+	<fstream>
+	<math.h>
+	<chrono>
+	<clocale>
+	<conio.h>
+	<windows.h>
+	<windowsx.h>
+	"vectors.h"
+	"structs.h"
+	"global_header.h"
+	"classes.h"
+	"game_options.h"
+	"syst_opt.h"
+	"screen_func.h"
+	"gameplay.h"
+	"prints.h"
+	"menu.h"
+
+1579177385 c:\programs\game_tester\vectors.h
+
+1579552990 c:\programs\game_tester\structs.h
+
+1578217457 c:\programs\game_tester\classes.h
+
+1579658100 c:\programs\game_tester\game_options.h
+
+1579658292 c:\programs\game_tester\syst_opt.h
+
+1590652939 c:\programs\game_tester\screen_func.h
+
+1579279216 c:\programs\game_tester\gameplay.h
+
+1578136931 c:\programs\game_tester\prints.h
+
+1577177003 c:\programs\game_tester\global_header.h
+
+1577984776 c:\programs\game_tester\menu.h
+

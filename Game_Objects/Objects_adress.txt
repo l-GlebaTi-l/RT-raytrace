@@ -1,0 +1,10 @@
+Game_Objects/triangle.txt
+Game_Objects/triangle2.txt
+Game_Objects/hame.txt
+Game_Objects/test_1.txt
+Game_Objects/box1.txt
+Game_Objects/box2.txt
+Game_Objects/box3.txt
+Game_Objects/box4.txt
+Game_Objects/box5.txt
+Game_Objects/box6.txt
