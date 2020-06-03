@@ -119,7 +119,6 @@ void Player_Physics_Fall()
     tPerson_Position.z = Ray_Tracing_For_Stand(World_Floor, Noga, OZ) + 1;
 }
 
-
 DWORD WINAPI Player_Go(LPVOID param)
 {
     XYZ OZ = {0,0,-1};

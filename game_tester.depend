@@ -39,3 +39,43 @@
 
 1577984776 c:\programs\game_tester\menu.h
 
+1591179537 source:c:\users\user\documents\github\rt-raytrace\main.cpp
+	<iostream>
+	<fstream>
+	<math.h>
+	<chrono>
+	<clocale>
+	<conio.h>
+	<windows.h>
+	<windowsx.h>
+	"vectors.h"
+	"structs.h"
+	"global_header.h"
+	"classes.h"
+	"game_options.h"
+	"syst_opt.h"
+	"screen_func.h"
+	"gameplay.h"
+	"prints.h"
+	"menu.h"
+
+1579177385 c:\users\user\documents\github\rt-raytrace\vectors.h
+
+1579552990 c:\users\user\documents\github\rt-raytrace\structs.h
+
+1577177003 c:\users\user\documents\github\rt-raytrace\global_header.h
+
+1578217457 c:\users\user\documents\github\rt-raytrace\classes.h
+
+1590653897 c:\users\user\documents\github\rt-raytrace\game_options.h
+
+1579658292 c:\users\user\documents\github\rt-raytrace\syst_opt.h
+
+1591179688 c:\users\user\documents\github\rt-raytrace\screen_func.h
+
+1591179640 c:\users\user\documents\github\rt-raytrace\gameplay.h
+
+1578136931 c:\users\user\documents\github\rt-raytrace\prints.h
+
+1577984776 c:\users\user\documents\github\rt-raytrace\menu.h
+

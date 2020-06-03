@@ -23,10 +23,7 @@ using namespace chrono;
 auto fixStt = steady_clock::now();
 auto fixEnd = steady_clock::now();
 auto fixRez = duration_cast<milliseconds>(fixEnd - fixStt);
-//        fixStt = steady_clock::now();
-//        fixEnd = steady_clock::now();
-//        fixRez = duration_cast<milliseconds>(fixEnd - fixStt);
-//        cout << "Time is = " << fixRez.count() << " ms" << endl;
+
 auto TIMESTART = steady_clock::now();
 auto TIMENOW = steady_clock::now();
 auto TIMESPEND = duration_cast<milliseconds>(TIMENOW - TIMESTART);
@@ -112,22 +109,6 @@ DWORD WINAPI WinMain_GameScreen (LPVOID param);
 LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 
-
-//struct GameObj_DataDate{    /// должен быть зависим от Obj_Alive
-//    int num;
-//    double
-//};
-
-//fixStt = steady_clock::now();
-//fixEnd = steady_clock::now();
-//fixRez = duration_cast<milliseconds>(fixEnd - fixStt);
-//cout << "Work = " << fixRez.count() << " ms" << endl;
-
-//Obj *All_Obj_G;
-
-///unsigned int *Scene_Obj_Nomera;             /// Из-за этого мне кажется, что возможно будут ошибки/глюки в игре     !!!!!!!
-                                            /// Нулевой элемент - количество номеров!!!
-
                         ///                             ///
                         ///                             ///
                         ///         НАЧАЛО MAIN         ///
@@ -143,10 +124,6 @@ int main()
     pixels2 = new unsigned char[resolution.shirina*resolution.vysota*4];
     pixels = &pixels1[0];
 
-//    ifstream file("vectors.txt");
-//    mesh A;
-//    A.mesher(file);
-//    file.close();
     ::Obj_N = 0;
 
     char Adress_Objects[] = {"Game_Objects/Objects_adress.txt"};
@@ -163,15 +140,6 @@ int main()
     }
     else{cout << "Окей, идем дальше" << endl;}
 
-//    ofstream out("page.txt");
-//    for (int i = 0; i < 24; i++){
-//        Cursor_dt = dCursor(Cursor_dt);
-////        screen_view(A, Player, out);
-//        cout << Cursor_dt.x << " " << Cursor_dt.y << endl;
-//        Sleep(50);
-//    }
-//    out.close();
-
     ifstream Obj_adr(Adress_Objects);
 //    Obj *All_Obj;
     All_Obj = Obj_Maker(All_Obj, Obj_adr);
@@ -183,12 +151,7 @@ int main()
             World_Floor.B[i].n = vector_sim(World_Floor.B[i].n);
         }
     }
-//    for(int j = 0; j < Obj_N; j++){
-//        cout << "Object " << j+1 << " parameters" << endl;
-//        obj_print(All_Obj[j]);
-//        cout << endl;
-//    }
-//    cout << "Do you want to make Radius for some objects?" << endl;
+
     cout << "Найти и записать радиусы для некоторых объектов?" << endl;
 //    cin >> answer;
 //    answer = getch();
@@ -218,13 +181,6 @@ int main()
     for(int i = Obj_Alive.n; i < Obj_Alive.n+50; i++){
         Obj_Alive.num[i] = -1;
     }
-//    Sleep(5000);
-//    HINSTANCE hInstance;
-//    HINSTANCE nPrevInstance;
-//    LPSTR lpCmdLine;
-//    int CmdShow;
-//    WinMain(hInstance, nPrevInstance, lpCmdLine, CmdShow);
-//    Player_eye();
     Picture_Complited = new bool [THREAD_NUMBER];
     for(int i = 0; i < THREAD_NUMBER; i++)
         Picture_Complited[i] = 0;
@@ -240,13 +196,9 @@ int main()
     Thread = CreateThread(NULL, 0, THR_Vn_Creator, NULL, 0, 0);
 //    WaitForMultipleObjects(COUNT_THREADS, Thread, TRUE, INFINITE);
     WaitForSingleObject(Thread,INFINITE);
-//    Sleep(10000);
-//    WinMain_GameScreen();
     cout << "Количество всех кадров = " << IAI << endl;
     cout << "Game Ends here. Thanks for testing!" << endl << "Say GoodBye!" << endl << "- ";
     Sleep(1000);
-//    cout << "Количество кадров: " << IAI << endl;
-//    cin >> IAI;
     getchar();
     return 0;
 }
@@ -272,12 +224,6 @@ int main()
 DWORD WINAPI THR_Vn_Creator(LPVOID param)
 {
     POINT DCursor;
-//    COORD FPS_Where;
-//    FPS_Where.X = 50;
-//    FPS_Where.Y = 3;
-//    COORD Look_Where;
-//    Look_Where.X = 1;
-//    Look_Where.Y = 1;
     HANDLE hOut;
     hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     auto Game_Start = steady_clock::now();
@@ -302,8 +248,7 @@ DWORD WINAPI THR_Vn_Creator(LPVOID param)
     SetCursorPos(resolution.shirina/2,resolution.vysota/2);         /// Сюда лучше прибавлять единицу перед стартом     !!!!!!!
     CLR_CNS(hOut);
     CreateThread(NULL, 0, WinMain_GameScreen, NULL, 0, 0);
-//    HANDLE threads[THREAD_NUMBER];
-//    Sleep(7789);
+
     Game_Start = steady_clock::now();
     TIMESTART = steady_clock::now();
     CreateThread(NULL, 0, Player_Physics, NULL, 0, 0);
@@ -313,8 +258,7 @@ DWORD WINAPI THR_Vn_Creator(LPVOID param)
         dDCursorX /= resolution.shirina;
         dDCursorY = DCursor.y;
         dDCursorY /= resolution.vysota;
-//        if(dDCursorX == 0 && dDCursorY == 0 && IAI > 5)
-//            goto GOTO_NO_dDCursor;              /// GOTO THERE START <----------------------
+
         Beta += dDCursorY;
         if(Beta > (Pi/2) - 0.1)             /// ограничение по вертикальному обзору (обязательно >0)
             Beta = (Pi/2) - 0.1;
@@ -347,12 +291,7 @@ DWORD WINAPI THR_Vn_Creator(LPVOID param)
         V.x = E0.x - dEShi.x*(tR) - dEVys.x*(tV);
         V.y = E0.y - dEShi.y*(tR) - dEVys.y*(tV);
         V.z = E0.z - dEShi.z*(tR) - dEVys.z*(tV);
-//        Vzglyad_Center = E0;
-        /// создать поток и передать ему параметр V.x V.y V.z центра экрана,
-        /// он из All_Obj будет выбирать те, что попадают на сцену путём измерения     _ O O _
-        /// угла между объектом и глаза, и создавать массив ссылок на эти объекты.     \__|__/
-        /// В функцию Ray_Trasing и будет передаваться данный массив, чтобы снизить
-        /// в ней нагрузку и объем вычислений. Гениально! Да! ДА! ДА! (ахах спатьки хочу).
+
         for(int i = 0; i < resolution.vysota; i++){           // i < 768
             for(int j = 0; j < resolution.shirina; j++){      // j < 1365
                 DM_Picture[i][j] = V;
@@ -368,73 +307,14 @@ DWORD WINAPI THR_Vn_Creator(LPVOID param)
             V.y += dEVys.y;
             V.z += dEVys.z;
         }
-//GOTO_NO_dDCursor:                               /// GOTO THERE END <------------------------
-//        cout << "Near wait" << endl;
-//        WaitForMultipleObjects(4, threads, TRUE, INFINITE);
-//        sinObzXYZ.x = DM_Picture[resolution.vysota-1][resolution.shirina-1].x;
-//        sinObzXYZ.y = DM_Picture[resolution.vysota-1][resolution.shirina-1].y;
-//        sinObzXYZ.z = DM_Picture[resolution.vysota-1][resolution.shirina-1].z;
-//        tsinObz1 = vector_SP(vector_ration(vector_ration(sinObzXYZ)),E0);
-///        WaitForMultipleObjectsEx(THREAD_NUMBER, threads, TRUE, INFINITE,1);
 
-//        sinObz1 = tsinObz1;
-//        sinObz2 = tsinObz1;
-//        Sleep(1000);
-//        cout << "After wait" << endl;
         ::GDM_Picture = DM_Picture;
-//        cout << "Full:" << endl;
+
         Person_dEYE = E0;
         Person_dEYE_Perp = tPerson_dEYE_Perp;
         Person_dEYE_Perp_Verh = tPerson_dEYE_Perp_Verh;
         Person_Position = tPerson_Position;
         Direction_Sun = Person_Position;
-
-//        vector_print(Person_dEYE);
-//        vector_print(Person_dEYE_Perp);
-//        vector_print(Person_dEYE_Perp_Verh);
-//        vector_print(Person_Position);
-//        cout << "end" << endl;
-//        Obj_On_Scene = Screen_Objects();          ///   Обязательный элемент для работы!!!!!!!!!!!!!!!
-//        fixStt = steady_clock::now();
-//        fixEnd = steady_clock::now();
-//        fixRez = duration_cast<milliseconds>(fixEnd - fixStt);
-//        cout << "Work = " << fixRez.count() << " ms" << endl;
-
-
-//        CLR_CNS(hOut);
-//        SetConsoleCursorPosition(hOut,
-//                                Look_Where);
-//        if(IAI!=0)
-//            cout << "Objects on scene: " << Scene_Obj_Nomera[0] << endl;
-//            cout << "Длина E0 = " << vector_module(E0) << endl;
-//            cout << "Длина Person_dEYE = " << vector_module(Person_dEYE) << endl;
-//            vector_print(Person_dEYE);
-//            cout << "Длина Person_dEYE_Perp = " << vector_module(Person_dEYE_Perp) << endl;
-//            vector_print(Person_dEYE_Perp);
-//            cout << "Позиция игрока: ";
-//            vector_print(Person_Position);
-//            cout << "Взгляд игрока: ";
-//            vector_print(DM_Picture[resolution.vysota/2][resolution.shirina/2]);
-//        cout << "Alpha = " << Alpha << ", Beta = " << Beta << endl;
-//        cout << "Person_dEYE: ";
-//        vector_print(Person_dEYE);
-//        cout << "Person_Position: ";
-//        vector_print(Person_Position);
-//        cout << endl << "\t\t\t0DM X:" << DM_Picture[0][0].x;
-//        cout << "\t0DM Y: " << DM_Picture[0][0].y;
-//        cout << "\t0DM Z: " << DM_Picture[0][0].z << "\t\t\t" << endl;
-//        cout << endl << "\t\t\t0DM X:" << DM_Picture[0][resolution.shirina-1].x;
-//        cout << "\tEDM Y: " << DM_Picture[0][resolution.shirina-1].y;
-//        cout << "\t DM Z: " << DM_Picture[0][resolution.shirina-1].z << "\t\t\t" << endl;
-//        cout << endl << "\t\t\tSDM X:" << DM_Picture[resolution.vysota/2][resolution.shirina/2].x;
-//        cout << "\tSDM Y: " << DM_Picture[resolution.vysota/2][resolution.shirina/2].y;
-//        cout << "\t DM Z: " << DM_Picture[resolution.vysota/2][resolution.shirina/2].z << "\t\t\t" << endl;
-//        cout << endl << "\t\t\tEDM X:" << DM_Picture[resolution.vysota-1][0].x;
-//        cout << "\t0DM Y: " << DM_Picture[resolution.vysota-1][0].y;
-//        cout << "\t DM Z: " << DM_Picture[resolution.vysota-1][0].z << "\t\t\t" << endl;
-//        cout << endl << "\t\t\tEDM X:" << DM_Picture[resolution.vysota-1][resolution.shirina-1].x;
-//        cout << "\tEDM Y: " << DM_Picture[resolution.vysota-1][resolution.shirina-1].y;
-//        cout << "\t DM Z: " << DM_Picture[resolution.vysota-1][resolution.shirina-1].z << "\t\t\t" << endl;
 
         TIME_GAME_NOW = steady_clock::now();
         TIME_GAME_SPEND = duration_cast<milliseconds>(TIME_GAME_NOW - TIME_GAME_START);
@@ -449,34 +329,10 @@ DWORD WINAPI THR_Vn_Creator(LPVOID param)
         iii++;
         fps++;
         Game_Start = steady_clock::now();
-//        if(fps == 15){
-//            SetConsoleCursorPosition(hOut,
-//                                    FPS_Where);
-//            cout << "fps: " << (fps/(fps_sec/1000)) << "    " << endl;
-//            fps_sec = 0;
-//            fps = 0;
-//        }
-//        SetConsoleCursorPosition(hOut,
-//                                Look_Where);
-//        Person_Position = {0, 6, -2};
-//        Person_dEYE = {2, 2, 0};
 
-///        for(int i = 0; i < THREAD_NUMBER; i++)
-///            threads[i] = CreateThread(NULL, 0, Screen_Pixels_All, (LPVOID)i, 0, 0);
-//        fixStt = steady_clock::now();
-        if(floor_with_or_no == -1)
-            InGame_PixelsPloskiy();
-        else
-            InGame_PixelsPloskiy_With_Floor();
-
-//        fixEnd = steady_clock::now();
-//        fixRez = duration_cast<milliseconds>(fixEnd - fixStt);
-//        cout << "Time is = " << fixRez.count() << " ms" << endl;
-
-//        cout << "Thr created" << endl;
+        InGame_PixelsPloskiy();
 
     }
-//    CLR_CNS(hOut);
     cout << "Srednee fps: " << ((iii*1000)/(sec)) << endl;
     cout << "Vremya: " << sec << endl;
     cout << "Srednee vremya: " << sec / iii << endl;
